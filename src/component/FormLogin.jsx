@@ -6,12 +6,16 @@ import { useNavigate } from 'react-router'
 
 const FormLogin = () => {
     const navigate = useNavigate()
+
+    const loggedInStatus = localStorage.getItem("isLoggedIn")
+
     const [isLoggedIn, setIsLoggedIn] = useState(false)
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     
     const saveData = () => {
         localStorage.setItem("isLoggedIn", true)
+        setIsLoggedIn(true)
     }
 
     const handleLogin = () => {
@@ -21,16 +25,15 @@ const FormLogin = () => {
             : alert("Invalid credentials")
                 setUsername("")
                 setPassword("")
-            if(isLoggedIn === "true") {
+            if(isLoggedIn === true) {
                 navigate("/dashboard")
             }
     }
 
 
     useEffect(() => {
-        let loggedInStatus = localStorage.getItem("isLoggedIn")
-        loggedInStatus === "true" ? navigate("/dashboard") : localStorage.removeItem("isLoggedIn")
-    }, [])
+        isLoggedIn === true || loggedInStatus === "true" ? navigate("/dashboard") : localStorage.removeItem("isLoggedIn")
+    }, [isLoggedIn])
   return (
     <div>
         <div className='max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-md'>
