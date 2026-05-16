@@ -22,11 +22,6 @@ const Dashboard = () => {
   return (
     <div>
         <Product/>
-        <Button className='bg-red-500' onClick={() => {
-            localStorage.removeItem("isLoggedIn")
-            navigate("/")
-        }}>Logout
-        </Button>
     </div>
   )
 }

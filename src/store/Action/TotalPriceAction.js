@@ -1,0 +1,4 @@
+export const SET_TOTAL_PRICE = 'SET_TOTAL_PRICE';
+export const DATA_PRODUCT = 'DATA_PRODUCT';
+export const CART_PRODUCT = 'CART_PRODUCT';
+
